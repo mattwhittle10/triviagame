@@ -61,10 +61,10 @@ $(document).ready(function() {
             // photo: ,
         }];
     var currentQuestion;
-    // var unansweredQuestions = 0;
+    var unansweredQuestions = 1;
     var select;
     var countDown = false; 
-    var timer = 15;
+    var timer = 10;
     var answerArray = [];
     
     $("#restart").hide();
@@ -82,11 +82,12 @@ $(document).ready(function() {
             select = triviaQuestions[currentQuestion];
             console.log(select);
             
+            
             $("#question").html("<h3> Question: " + select.question + "</h3>");
             for(var i=0; i < select.choice.length; i++) {
                 var usersChoice = $("<div>");
                 usersChoice.addClass("usersChoice");
-                usersChoice.html(select.choice[i]);
+                usersChoice.html(select.choice[i]);     
                 usersChoice.attr("guess", i);
                 $("#options").html(select.choice);
             }
@@ -108,11 +109,43 @@ $(document).ready(function() {
         $("#timer").html("<h3> Time Remaining " + timer + "</h3>");
         timer --;
         
-        if (timer === 0) {  
-                // unanswereQuestions++;
+        if (timer === 0) {
+            function unansweredWrite() {
+                $("#unanswered").html("<h5> Unanswered Questions: " + unansweredQuestions++ + "</h5>");
+            }unansweredWrite();
                 stopTimer();
-                $("#unanswered").html("<h5> Time is up. The correct answer is: " + select.choice[select.answer] + "<h5>")
+                $("#alert").html("<h2> Time's up! The correct answer is: " + select.choice[select.answer] + "<h2>")
+                $("#restart").show();
             }
+        
+    $("#restart").click(function(){
+        timer = 10;
+        startTimer();
+        for (var i=0; i < triviaQuestions.length; i++) {
+            answerArray.push(triviaQuestions[i]);
+            console.log(answerArray)
+        //function to randomly generate a question from the array
+        function showQuestion() {
+            currentQuestion = Math.floor(Math.random() * triviaQuestions.length);
+            console.log(currentQuestion);
+            //variable to get the objects out of the index chosen in the array
+            select = triviaQuestions[currentQuestion];
+            console.log(select);
+            
+            
+            $("#question").html("<h3> Question: " + select.question + "</h3>");
+            for(var i=0; i < select.choice.length; i++) {
+                var usersChoice = $("<div>");
+                usersChoice.addClass("usersChoice");
+                usersChoice.html(select.choice[i]);     
+                usersChoice.attr("guess", i);
+                $("#options").html(select.choice);
+            }
+        }showQuestion()
+    }
+})
+        
+
 }
 
     //function to stop the timer
