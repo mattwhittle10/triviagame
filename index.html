@@ -8,18 +8,30 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   </head>
   <body>
-    <h1> The Office Trivia </h1>
-    <button class="btn-dark" id="start">Start</button>
-    <button class="btn-success" id="restart">Next Question</button>
+    <h1 id="title"> The Office Trivia </h1>
+    <div class="container">
+    <div class="row">
+    <div class="col-lg-1 col-md-1 col-sm-0"></div>
+    <button class="btn-success col-lg-10 col-md-10 col-sm-12" id="start">Start</button>
+    <button class="btn-success col-lg-10 col-md-10 col-sm-12" id="restart">Next Question</button>
+  </div>
+</div>
+<div id="dataBox" class="container">
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-12">
     <button id="answers"></button>
     <div id="timer"> </div>
     <div id="question"> </div>
     <button class="btn-success" id="options"> </button>
     <div id="unanswered"></div>
     <div id="alert"></div>
-
+  </div>
+</div>
+</div>
+</div>
       
     <!-- Optional JavaScript -->
     
