@@ -67,8 +67,10 @@ $(document).ready(function() {
     var timer = 10;
     var answerArray = [];
     
+    $("#dataBox").hide();
     $("#restart").hide();
     $("#start").click(function() {
+        $("#dataBox").show();
         $("#start").hide();
         startTimer();
         for (var i = 0; i < triviaQuestions.length; i++) {
@@ -88,7 +90,10 @@ $(document).ready(function() {
                 usersChoice.addClass("usersChoice");
                 usersChoice.html(select.choice[i]);    
                 usersChoice.attr("guess", i);
-                $("#options").html(select.choice);
+                $("#button1").html(select.choice.slice(0,1));
+                $("#button2").html(select.choice.slice(1,2));
+                $("#button3").html(select.choice.slice(2,3));
+                $("#button4").html(select.choice.slice(3));
             }
         }showQuestion()
     }
@@ -142,7 +147,10 @@ $(document).ready(function() {
                 usersChoice.addClass("usersChoice");
                 usersChoice.html(select.choice[i]);     
                 usersChoice.attr("guess", i);
-                $("#options").html(select.choice);
+                $("#button1").html(select.choice.slice(0,1));
+                $("#button2").html(select.choice.slice(1,2));
+                $("#button3").html(select.choice.slice(2,3));
+                $("#button4").html(select.choice.slice(3));
             }
         
         }showQuestion();
@@ -161,4 +169,5 @@ $(document).ready(function() {
 
 });
 
-
+    
+        
