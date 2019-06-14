@@ -114,7 +114,10 @@ $(document).ready(function() {
                     guess.push(select.choice.slice(3));
                     console.log(select.choice.slice(3));  
                 })
+            
                     if (guess === select.answer) {
+                        console.log(select.answer);
+                        console.log(guess);
                         correctAnswers++;
                         $("#correct").html("<h2 Good Job! >" +  select.choice[select.answer] + " is correct!<h2>")
                         $("#restart").show();
