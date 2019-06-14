@@ -62,10 +62,13 @@ $(document).ready(function() {
         }];
     var currentQuestion;
     var unansweredQuestions = 1;
+    var correctAnswers = 1;
+    var wrongAnswers = 1;
     var select;
     var countDown = false; 
     var timer = 10;
     var answerArray = [];
+    var guess = [];
     
     $("#dataBox").hide();
     $("#restart").hide();
@@ -75,7 +78,7 @@ $(document).ready(function() {
         startTimer();
         for (var i = 0; i < triviaQuestions.length; i++) {
             answerArray.push(triviaQuestions[i]);
-            console.log(answerArray)
+            // console.log(answerArray)
         //function to randomly generate a question from the array
         function showQuestion() {
             currentQuestion = Math.floor(Math.random() * triviaQuestions.length);
@@ -94,6 +97,20 @@ $(document).ready(function() {
                 $("#button2").html(select.choice.slice(1,2));
                 $("#button3").html(select.choice.slice(2,3));
                 $("#button4").html(select.choice.slice(3));
+
+                $("#button1").click(function(){
+                    console.log(select.choice.slice(0,1));
+                })
+                $("#button2").click(function(){
+                    console.log(select.choice.slice(1,2));
+                }) 
+                $("#button3").click(function(){
+                    console.log(select.choice.slice(2,3));
+                }) 
+                $("#button4").click(function(){
+                    console.log(select.choice.slice(3));  
+                })
+
             }
         }showQuestion()
     }
@@ -131,7 +148,7 @@ $(document).ready(function() {
             startTimer();
             for (var i = 0; i < triviaQuestions.length; i++) {
                 answerArray.push(triviaQuestions[i]);
-                console.log(answerArray)
+                // console.log(answerArray)
         //function to randomly generate a question from the array
         function showQuestion() {
             currentQuestion = Math.floor(Math.random() * triviaQuestions.length);
@@ -151,7 +168,34 @@ $(document).ready(function() {
                 $("#button2").html(select.choice.slice(1,2));
                 $("#button3").html(select.choice.slice(2,3));
                 $("#button4").html(select.choice.slice(3));
+
+                $("#button1").click(function(){
+                    console.log(select.choice.slice(0,1));
+                })
+                $("#button2").click(function(){
+                    console.log(select.choice.slice(1,2));
+                }) 
+                $("#button3").click(function(){
+                    console.log(select.choice.slice(2,3));
+                }) 
+                $("#button4").click(function(){
+                    console.log(select.choice.slice(3));  
+                })
+                    if (guess === select.answer) {
+                        correctAnswers++;
+                        stopTimer();
+                        $("#correct").html("<h2 Good Job! >" +  select.choice[select.answer] + " is correct!<h2>")
+                        $("#restart").show();
+                    } else { (guess !== select.answer) 
+                        wrongAnswers++;
+                        stopTimer();
+                        $("#incorrect").html("<h2 Sorry, " + select.choice[select.answer] + " is incorrect.</h2>")
+                        $("#restart").show();
+                    }
+                
             }
+
+            
         
         }showQuestion();
     
