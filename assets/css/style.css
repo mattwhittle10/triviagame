@@ -1,5 +1,5 @@
 body{
-    background-image: url("https://mattwhittle10.github.io/triviagame/background-image.jpg");
+    background-image: url(../Images/background-image.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     height: 100%;
