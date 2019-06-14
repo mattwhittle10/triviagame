@@ -99,18 +99,31 @@ $(document).ready(function() {
                 $("#button4").html(select.choice.slice(3));
 
                 $("#button1").click(function(){
+                    guess.push(select.choice.slice(0,1));
                     console.log(select.choice.slice(0,1));
                 })
                 $("#button2").click(function(){
+                    guess.push(select.choice.slice(1,2));
                     console.log(select.choice.slice(1,2));
                 }) 
                 $("#button3").click(function(){
+                    guess.push(select.choice.slice(2,3));
                     console.log(select.choice.slice(2,3));
                 }) 
                 $("#button4").click(function(){
+                    guess.push(select.choice.slice(3));
                     console.log(select.choice.slice(3));  
                 })
-
+                    if (guess === select.answer) {
+                        correctAnswers++;
+                        $("#correct").html("<h2 Good Job! >" +  select.choice[select.answer] + " is correct!<h2>")
+                        $("#restart").show();
+                    } else { (guess !== select.answer) 
+                        wrongAnswers++;
+                        $("#incorrect").html("<h2 Sorry, " + select.choice[select.answer] + " is incorrect.</h2>")
+                        $("#restart").show();
+                    }
+                
             }
         }showQuestion()
     }
@@ -170,25 +183,27 @@ $(document).ready(function() {
                 $("#button4").html(select.choice.slice(3));
 
                 $("#button1").click(function(){
+                    guess.push(select.choice.slice(0,1));
                     console.log(select.choice.slice(0,1));
                 })
                 $("#button2").click(function(){
+                    guess.push(select.choice.slice(1,2));
                     console.log(select.choice.slice(1,2));
                 }) 
                 $("#button3").click(function(){
+                    guess.push(select.choice.slice(2,3));
                     console.log(select.choice.slice(2,3));
                 }) 
                 $("#button4").click(function(){
+                    guess.push(select.choice.slice(3));
                     console.log(select.choice.slice(3));  
                 })
                     if (guess === select.answer) {
                         correctAnswers++;
-                        stopTimer();
                         $("#correct").html("<h2 Good Job! >" +  select.choice[select.answer] + " is correct!<h2>")
                         $("#restart").show();
                     } else { (guess !== select.answer) 
                         wrongAnswers++;
-                        stopTimer();
                         $("#incorrect").html("<h2 Sorry, " + select.choice[select.answer] + " is incorrect.</h2>")
                         $("#restart").show();
                     }
